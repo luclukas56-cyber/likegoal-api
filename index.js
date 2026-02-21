@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const UNIVERSE_ID = "8545209179"; // your universe id
+const UNIVERSE_ID = "81850748067669"; // your universe id
 const ROBLOX_URL = `https://games.roblox.com/v1/games/votes?universeIds=${UNIVERSE_ID}`;
 
 app.get("/likes", async (req, res) => {
