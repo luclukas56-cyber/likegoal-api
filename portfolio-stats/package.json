@@ -1,0 +1,7 @@
+{
+  "name": "luc-lukas-public-stats",
+  "private": true,
+  "type": "module",
+  "scripts": { "refresh": "node scripts/refresh.mjs" },
+  "engines": { "node": ">=20" }
+}
