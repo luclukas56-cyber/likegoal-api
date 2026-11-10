@@ -1,8 +1,6 @@
 name: Refresh portfolio statistics
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '2-57/5 * * * *'
   push:
     branches: [main, portfolio-stats-updater]
     paths:
@@ -24,14 +22,3 @@ jobs:
         run: node portfolio-stats/scripts/refresh.mjs
       - name: Publish signed snapshots to the portfolio backend
         run: node portfolio-stats/scripts/publish.mjs
-  keepalive:
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    permissions:
-      actions: write
-    steps:
-      - name: Keep the scheduled updater active
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/portfolio-stats.yml/enable"
